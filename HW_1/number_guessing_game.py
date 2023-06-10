@@ -5,7 +5,6 @@
 from random import randint
 num = randint(LOWER_LIMIT, UPPER_LIMIT)
 '''
-
 from random import randint
 
 LOWER_LIMIT = 0
@@ -18,8 +17,7 @@ num = randint(LOWER_LIMIT, UPPER_LIMIT)
 print("Угадайте число от 0 до 1000. У вас есть 10 попыток.")
 
 for attempt in range(1, MAX_ATTEMPTS + 1):
-    guess = int(
-        input(f"Попытка #{attempt}: Введите вашу догадку: "))
+    guess = int(input(f"Попытка #{attempt}: Введите вашу догадку: "))
 
     if guess < num:
         print("Загаданное число больше вашей догадки.")
@@ -28,7 +26,5 @@ for attempt in range(1, MAX_ATTEMPTS + 1):
     else:
         print("Поздравляю! Вы угадали число!")
         break
-
-    if attempt == MAX_ATTEMPTS:
-        print(
-            f"К сожалению, вы исчерпали все попытки. Загаданное число было {num}.")
+else:
+    print(f"К сожалению, вы исчерпали все попытки. Загаданное число было {num}.")

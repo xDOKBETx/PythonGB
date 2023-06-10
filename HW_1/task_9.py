@@ -6,7 +6,7 @@
 for i in range(2, 11):
     for j in range(2, 6):
         multiplication = i * j
-        print(f"{j} x {i} = {multiplication}\t", end="")
+        print(f"{j} x {i} = {multiplication:2}\t", end="")
     print()
 
 print()
@@ -14,5 +14,5 @@ print()
 for i in range(2, 11):
     for j in range(6, 10):
         multiplication = i * j
-        print(f"{j} x {i} = {multiplication}\t", end="")
+        print(f"{j} x {i} = {multiplication:2}\t", end="")
     print()

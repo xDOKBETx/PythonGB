@@ -8,20 +8,16 @@ number = int(input("Введите число: "))
 
 # Проверка ограничений на ввод
 if number < 0 or number > 100000:
-    print("Число должно быть положительным и не превышать 100000")
+    print("Число должно быть неотрицательным и не превышать 100000")
+elif number == 0:
+    print("Число 0 не является ни простым, ни составным")
+elif number == 1:
+    print("Число 1 не является ни простым, ни составным")
 else:
     # Проверка числа на простоту
-    is_prime = True
-    if number < 2:
-        is_prime = False
+    for i in range(2, int(number**0.5) + 1):
+        if number % i == 0:
+            print("Число является составным")
+            break
     else:
-        for i in range(2, int(number**0.5) + 1):
-            if number % i == 0:
-                is_prime = False
-                break
-
-    # Вывод результата
-    if is_prime:
         print("Число является простым")
-    else:
-        print("Число является составным")

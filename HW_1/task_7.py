@@ -11,13 +11,26 @@
 number = int(input("Введите число от 1 до 999: "))
 
 if 1 <= number <= 9:
+    # Цифра: возводим в квадрат
     square = number ** 2
     print(f"Введена цифра {number}. Квадрат числа {number}: {square}")
 elif 10 <= number <= 99:
-    digit_product = (number // 10) * (number % 10)
+    # Двузначное число: находим произведение цифр
+    tens_digit = number // 10
+    ones_digit = number % 10
+    digit_product = tens_digit * ones_digit
     print(f"Введено двузначное число {number}. Произведение цифр числа {number}: {digit_product}")
 elif 100 <= number <= 999:
-    reverse_number = int(str(number)[::-1])
+    # Трехзначное число: находим зеркальное отображение
+    reverse_number = 0
+    temp = number
+    while temp > 0:
+        # Получаем остаток от деления на 10 (последнюю цифру числа)
+        remainder = temp % 10
+        # Добавляем остаток в зеркальное отображение, увеличивая разрядность
+        reverse_number = reverse_number * 10 + remainder
+        # Уменьшаем число, удаляя последнюю цифру
+        temp = temp // 10
     print(f"Введено трехзначное число {number}. Зеркальное отображение числа {number}: {reverse_number}")
 else:
     print("Число не входит в указанный диапазон. Пожалуйста, введите новое число.")

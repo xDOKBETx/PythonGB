@@ -21,7 +21,10 @@ while True:
         # Вычисление налога на богатство
         tax = balance * tax_rate
         balance -= tax
-        print(f"Удержан налог на богатство в размере {tax:.2f} у.е.")
+        print(
+            f"Удержан налог на богатство в размере {tax:.2f} у.е.")
+        print(
+            f"Остаток на счете после удержания налога: {balance:.2f} у.е.")
 
     print("Выберите действие:")
     print("1. Пополнение")
@@ -48,28 +51,33 @@ while True:
                 # Начисление бонуса за каждую третью операцию
                 bonus = balance * 0.03
                 balance += bonus
-                print(f"Бонус {bonus:.2f} у.е. начислен за третье действие.")
+                print(
+                    f"Бонус {bonus:.2f} у.е. начислен за третье действие.")
         else:
-            print("Сумма пополнения должна быть кратной 50.")
+            print(
+                "Сумма пополнения должна быть кратной 50.")
     elif action == 2:
         if amount % 50 == 0:
-            total_with_commission = amount + (amount * 0.015)
+            commission = amount * 0.015
+            commission = max(commission, 30)
+            commission = min(commission, 600)
+            total_with_commission = amount + commission
             if balance >= total_with_commission:
                 # Снятие средств с комиссией
-                commission = amount * 0.015
-                commission = max(commission, 30)
-                commission = min(commission, 600)
                 balance -= total_with_commission
-                print(f"Комиссия {commission:.2f} у.е. удержана за снятие.")
+                print(
+                    f"Комиссия {commission:.2f} у.е. удержана за снятие.")
 
                 transaction_count += 1
                 if transaction_count % 3 == 0:
                     # Начисление бонуса за каждую третью операцию
                     bonus = balance * 0.03
                     balance += bonus
-                    print(f"Бонус {bonus:.2f} у.е. начислен за третью операцию со счётом.")
+                    print(
+                        f"Бонус {bonus:.2f} у.е. начислен за третью операцию со счётом.")
             else:
-                print("Недостаточно средств на счете для снятия с учетом комиссии.")
+                print(
+                    "Недостаточно средств на счете для снятия с учетом комиссии.")
         else:
             print("Сумма снятия должна быть кратной 50.")
 
@@ -79,4 +87,5 @@ while True:
 
     print(f"Остаток на счете: {balance:.2f} у.е.")
 
-print(f"Окончательный остаток на счете: {balance:.2f} у.е.")
+print(
+    f"Окончательный остаток на счете: {balance:.2f} у.е.")

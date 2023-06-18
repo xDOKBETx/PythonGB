@@ -18,10 +18,7 @@ def count_most_common_words(text, num_words=10):
     # Подсчитать частоту встречаемости слов
     word_counts = {}
     for word in words:
-        if word in word_counts:
-            word_counts[word] += 1
-        else:
-            word_counts[word] = 1
+        word_counts[word] = word_counts.get(word, 0) + 1
 
     # Сортировать слова по частоте встречаемости
     sorted_words = sorted(word_counts.items(),

@@ -11,7 +11,7 @@ text = input("Введите строку текста: ")
 words = text.split()
 
 # Сортировка слов по кодировке Unicode с учетом приоритета заглавных букв
-sorted_words = sorted(words, key=lambda x: (not x[0].isupper(), x.lower(), x))
+sorted_words = sorted(words)
 
 # Определение длины самого длинного слова
 max_length = len(max(sorted_words, key=len))

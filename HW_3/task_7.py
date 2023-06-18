@@ -17,7 +17,7 @@
 text = input("Введите строку текста: ")
 
 frequency = {}
-for char in text:
+for char in set(text):
     frequency[char] = text.count(char)
 
 print("Результат (с использованием метода count):")

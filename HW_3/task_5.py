@@ -8,6 +8,7 @@ my_list = [2, 3, 5, 2, 4, 6, 1, 7, 9, 5, 8, 3, 1, 7, 10]
 
 # Создание списка с порядковыми номерами нечетных элементов
 odd_indices = [i + 1 for i, num in enumerate(my_list) if num % 2 != 0]
+# odd_indices = [i for i, num in enumerate(my_list, 1) if num % 2 != 0] # Предложение варианта кода от преподавателя
 
 print("Исходный список:")
 print(my_list)

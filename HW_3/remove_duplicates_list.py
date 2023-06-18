@@ -5,19 +5,12 @@
 
 def find_duplicates(lst):
     duplicates = []
-    counts = {}
-    
     for item in lst:
-        if item in counts:
-            counts[item] += 1
-            if counts[item] == 2:
-                duplicates.append(item)
-        else:
-            counts[item] = 1
-    
-    return list(set(duplicates))
+        if lst.count(item) > 1 and item not in duplicates:
+            duplicates.append(item)
+    return duplicates
 
-# Пример использования
+
 lst = [1, 2, 2, 3, 4, 4, 5, 6, 7]
 result = find_duplicates(lst)
 print(result)

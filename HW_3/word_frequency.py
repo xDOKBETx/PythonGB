@@ -9,15 +9,11 @@ def count_most_common_words(text, num_words=10):
     # Привести текст к нижнему регистру
     text = text.lower()
 
-    # Знаки препинания
-    punctuation = '.,?!;:()[]{}-\'\"'
-
     # Удалить знаки препинания из текста
-    for char in punctuation:
-        text = text.replace(char, '')
+    text = ''.join(char for char in text if char.isalpha() or char.isspace())
 
     # Разбить текст на слова
-    words = text.split()
+    words = text.split(' ')
 
     # Подсчитать частоту встречаемости слов
     word_counts = {}
@@ -56,7 +52,6 @@ text = """
 После мирного дня трудового, будь спокойна, родная страна!
 
 Атас! Эй, веселей, рабочий класс. Атас!
-Источник teksty-pesenok.ru
 Танцуйте, мальчики, любите девочек!
 Атас! Пускай запомнят нынче нас,
 Малина-ягода. Атас! Ата-атас!

@@ -16,18 +16,14 @@ def process_arguments(**kwargs):
 
 
 def hashable(obj):
-    try:
-        hash(obj)
-        return True
-    except TypeError:
-        return False
+    return hash(obj)
 
 
 arguments = {
     'name': 'Aleksey',
     'age': 43,
     'lucky number': None,
-    'Pi' : 3.14,
+    'Pi': 3.14,
     'true': True
 }
 

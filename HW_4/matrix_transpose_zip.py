@@ -2,7 +2,7 @@
 
 def transpose_matrix(matrix):
     # Используем zip() для транспонирования матрицы
-    transposed = list(zip(*matrix))
+    transposed = list(map(list, zip(*matrix)))
     
     # Возвращаем транспонированную матрицу
     return transposed

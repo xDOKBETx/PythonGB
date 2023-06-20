@@ -7,8 +7,7 @@
 
 
 def calculate_profit(dictionary):
-    return all(sum(value for value in values if value > 0) >= abs(sum(value for value in values if value < 0))
-               for values in dictionary.values())
+    return all(map(lambda lst: sum(lst) > 0, dictionary.values()))
 
 
 companies = {

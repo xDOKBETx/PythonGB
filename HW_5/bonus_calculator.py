@@ -9,5 +9,5 @@ names = ['Алексей', 'Дмитрий', 'Михаил']
 rates = [10000, 20000, 30000]
 bonuses = ['10.25%', '5%', '8.5%']
 
-result = {name: rate * float(bonus.strip('%')) / 100 for name, rate, bonus in zip(names, rates, bonuses)}
+result = {name: rate * float(bonus[:-1]) / 100 for name, rate, bonus in zip(names, rates, bonuses)}
 print(result)

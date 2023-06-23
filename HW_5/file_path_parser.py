@@ -3,15 +3,10 @@
 Функция возвращает кортеж из трёх элементов: путь, имя файла, расширение файла.
 '''
 
-import os
-
 
 def parse_file_path(file_path):
-    # Разделяем путь и имя файла
-    path, filename = os.path.split(file_path)
-    # Разделяем имя файла и расширение
-    filename, extension = os.path.splitext(filename)
-    # Возвращаем кортеж из трех элементов
+    path, file_with_extension = file_path.rsplit("\\", 1)
+    filename, extension = file_with_extension.rsplit(".", 1)
     return path, filename, extension
 
 

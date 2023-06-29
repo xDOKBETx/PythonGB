@@ -1,3 +1,5 @@
+import sys
+
 __all__ = ["is_valid_date"]
 
 
@@ -48,7 +50,11 @@ def is_valid_date(date_str):
 
 
 if __name__ == "__main__":
-    date = input("Введите дату в формате DD.MM.YYYY: ")
+    if len(sys.argv) != 2:
+        print("Используйте команду: python date_validator.py <date>")
+        sys.exit(1)
+
+    date = sys.argv[1]
     if is_valid_date(date):
         print("Дата может существовать")
     else:

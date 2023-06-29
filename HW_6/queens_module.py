@@ -17,7 +17,7 @@ def are_queens_safe(queens):
     return True
 
 
-def generate_random_queens(num_queens, num_attempts):
+def generate_random_queens(num_queens=8, num_attempts=100):
     """
     Генерирует случайные расстановки ферзей на доске и возвращает успешные расстановки.
 
@@ -37,7 +37,7 @@ def generate_random_queens(num_queens, num_attempts):
         if are_queens_safe(queens):
             successful_arrangements.append(queens)
 
-        if len(successful_arrangements) == 4:
+        if len(successful_arrangements) == 4:  # Остановиться после нахождения 4 успешных расстановок
             break
 
     return successful_arrangements

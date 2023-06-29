@@ -29,7 +29,7 @@ def generate_random_queens():
     """
     successful_arrangements = []
 
-    while len(successful_arrangements) < 1: # Изменил на вывод одной успешной расстановки. Устал ждать.
+    while len(successful_arrangements) < 4: # Изменил на вывод одной успешной расстановки. Устал ждать.
         queens = [(randint(1, 8), randint(1, 8)) for _ in range(8)]
 
         if check_queens_solution(queens):

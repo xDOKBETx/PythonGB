@@ -1,0 +1,121 @@
+{
+    "path": "HW_8",
+    "type": "directory",
+    "size": 22397,
+    "contents": [
+        {
+            "path": "HW_8\\.idea",
+            "type": "directory",
+            "size": 3443,
+            "contents": [
+                {
+                    "path": "HW_8\\.idea\\.gitignore",
+                    "type": "file",
+                    "size": 50
+                },
+                {
+                    "path": "HW_8\\.idea\\HW_8.iml",
+                    "type": "file",
+                    "size": 454
+                },
+                {
+                    "path": "HW_8\\.idea\\inspectionProfiles",
+                    "type": "directory",
+                    "size": 613,
+                    "contents": [
+                        {
+                            "path": "HW_8\\.idea\\inspectionProfiles\\profiles_settings.xml",
+                            "type": "file",
+                            "size": 174
+                        },
+                        {
+                            "path": "HW_8\\.idea\\inspectionProfiles\\Project_Default.xml",
+                            "type": "file",
+                            "size": 439
+                        }
+                    ]
+                },
+                {
+                    "path": "HW_8\\.idea\\misc.xml",
+                    "type": "file",
+                    "size": 189
+                },
+                {
+                    "path": "HW_8\\.idea\\modules.xml",
+                    "type": "file",
+                    "size": 267
+                },
+                {
+                    "path": "HW_8\\.idea\\vcs.xml",
+                    "type": "file",
+                    "size": 188
+                },
+                {
+                    "path": "HW_8\\.idea\\workspace.xml",
+                    "type": "file",
+                    "size": 1682
+                }
+            ]
+        },
+        {
+            "path": "HW_8\\add_user_to_json.py",
+            "type": "file",
+            "size": 4568
+        },
+        {
+            "path": "HW_8\\csv_to_json.py",
+            "type": "file",
+            "size": 2668
+        },
+        {
+            "path": "HW_8\\csv_to_pickle.py",
+            "type": "file",
+            "size": 936
+        },
+        {
+            "path": "HW_8\\file_traversal.py",
+            "type": "file",
+            "size": 3649
+        },
+        {
+            "path": "HW_8\\json_to_csv.py",
+            "type": "file",
+            "size": 1501
+        },
+        {
+            "path": "HW_8\\json_to_pickle_converter.py",
+            "type": "file",
+            "size": 1219
+        },
+        {
+            "path": "HW_8\\names_numbers_to_json.py",
+            "type": "file",
+            "size": 1406
+        },
+        {
+            "path": "HW_8\\pickle_to_csv_converter.py",
+            "type": "file",
+            "size": 1561
+        },
+        {
+            "path": "HW_8\\users.json",
+            "type": "file",
+            "size": 371
+        },
+        {
+            "path": "HW_8\\users.pickle",
+            "type": "file",
+            "size": 149
+        },
+        {
+            "path": "HW_8\\users_processed.json",
+            "type": "file",
+            "size": 926
+        },
+        {
+            "path": "HW_8\\__init__.py",
+            "type": "file",
+            "size": 0
+        }
+    ]
+}

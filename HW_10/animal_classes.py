@@ -1,11 +1,10 @@
-'''
-Доработаем задачи 5-6. Создайте класс-фабрику.
-Класс принимает тип животного (название одного из созданных классов)
-и параметры для этого типа.
-Внутри класса создайте экземпляр на основе переданного типа и
-верните его из класса-фабрики
+''' Задание №5
+Создайте три (или более) отдельных классов животных. Например рыбы, птицы и т.п.
+У каждого класса должны быть как общие свойства, например имя, так и специфичные для класса.
+Для каждого класса создайте метод, выводящий информацию специфичную для данного класса.
 '''
 
+INVALID_SPECIFIC_VALUE_ERROR = "Недопустимое значение specific"
 
 class Animal:
     def __init__(self, name):
@@ -29,7 +28,7 @@ class Fish(Animal):
         if specific in self.prop:
             return self.prop[specific]
         else:
-            raise ValueError("Недопустимое значение specific")
+            raise ValueError(INVALID_SPECIFIC_VALUE_ERROR)
 
 
 class Bird(Animal):
@@ -49,7 +48,7 @@ class Bird(Animal):
         if specific in self.prop:
             return self.prop[specific]
         else:
-            raise ValueError("Недопустимое значение specific")
+            raise ValueError(INVALID_SPECIFIC_VALUE_ERROR)
 
 
 class Human(Animal):
@@ -69,40 +68,15 @@ class Human(Animal):
         if specific in self.prop:
             return self.prop[specific]
         else:
-            raise ValueError("Недопустимое значение specific")
-
-
-class AnimalFactory:
-    def __init__(self, animal_type, name, specific):
-        self.animal_type = animal_type
-        self.name = name
-        self.specific = specific
-
-    def create_animal(self):
-        """
-        Создает экземпляр животного на основе переданного типа и возвращает его.
-        :return: Экземпляр животного.
-        :raises: ValueError, если передан недопустимый тип животного.
-        """
-        if self.animal_type == "Fish":
-            return Fish(self.name, self.specific)
-        elif self.animal_type == "Bird":
-            return Bird(self.name, self.specific)
-        elif self.animal_type == "Human":
-            return Human(self.name, self.specific)
-        else:
-            raise ValueError("Недопустимый тип животного")
+            raise ValueError(INVALID_SPECIFIC_VALUE_ERROR)
 
 
 if __name__ == '__main__':
-    animal_factory = AnimalFactory("Fish", 'Карась', 1)
-    fish = animal_factory.create_animal()
-    print(fish.get_specific(1))
+    fish = Fish('Карась', 1)
+    print(fish.spec_op)
 
-    animal_factory = AnimalFactory("Bird", 'Орёл', 1)
-    bird = animal_factory.create_animal()
-    print(bird.get_specific(1))
+    bird = Bird('Орёл', 1)
+    print(bird.spec_op)
 
-    animal_factory = AnimalFactory("Human", 'Алкоголик', 1)
-    human = animal_factory.create_animal()
-    print(human.get_specific(1))
+    human = Human('Европеоид', 1)
+    print(human.spec_op)

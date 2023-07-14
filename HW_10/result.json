@@ -1,0 +1,42 @@
+{
+    "path": "HW_10",
+    "type": "directory",
+    "size": 21124,
+    "contents": [
+        {
+            "path": "HW_10\\animal_classes.py",
+            "type": "file",
+            "size": 3786
+        },
+        {
+            "path": "HW_10\\animal_factory.py",
+            "type": "file",
+            "size": 4872
+        },
+        {
+            "path": "HW_10\\circle.py",
+            "type": "file",
+            "size": 1612
+        },
+        {
+            "path": "HW_10\\directory_traverser.py",
+            "type": "file",
+            "size": 4356
+        },
+        {
+            "path": "HW_10\\employee.py",
+            "type": "file",
+            "size": 2015
+        },
+        {
+            "path": "HW_10\\person_info.py",
+            "type": "file",
+            "size": 2416
+        },
+        {
+            "path": "HW_10\\rectangle.py",
+            "type": "file",
+            "size": 2067
+        }
+    ]
+}

@@ -15,11 +15,12 @@ class BaseRectangleException(Exception):
         self.message = message
         self.details = details
         super().__init__(message)
+        self.log_exception()  # Call log_exception() when the exception is raised
 
     def log_exception(self):
         """Метод для записи информации об исключении в журнал."""
-        timestamp = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
-        with open("error_log.txt", "a") as log_file:
+        timestamp = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+        with open("error_log.txt", "a", encoding="utf-8") as log_file:  # Указываем кодировку "utf-8"
             log_file.write(f"[{timestamp}] {self.__class__.__name__}: {self.message}\n")
             if self.details:
                 log_file.write(f"Details: {self.details}\n")
@@ -65,7 +66,6 @@ def main():
         print(e.message)
         if e.details:
             print(f"Дополнительные детали: {e.details}")
-        e.log_exception()
 
 
 if __name__ == "__main__":

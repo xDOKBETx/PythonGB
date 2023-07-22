@@ -5,52 +5,27 @@
 """
 
 
-import datetime
-
-
-class BaseRectangleException(Exception):
-    """Базовый класс пользовательского исключения для ошибок с прямоугольником."""
-
-    def __init__(self, message, details=None):
-        self.message = message
-        self.details = details
-        super().__init__(message)
-        self.log_exception()  # Call log_exception() when the exception is raised
-
-    def log_exception(self):
-        """Метод для записи информации об исключении в журнал."""
-        timestamp = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
-        with open("error_log.txt", "a", encoding="utf-8") as log_file:  # Указываем кодировку "utf-8"
-            log_file.write(f"[{timestamp}] {self.__class__.__name__}: {self.message}\n")
-            if self.details:
-                log_file.write(f"Details: {self.details}\n")
-            log_file.write("\n")
-
-
-class NegativeSideLengthError(BaseRectangleException):
-    """Дочерний класс исключения для ошибок с отрицательными длинами сторон прямоугольника."""
-
-    def __init__(self, side_length):
-        message = "Ошибка: Сторона прямоугольника имеет отрицательную длину."
-        details = f"Отрицательное значение стороны: {side_length}"
-        super().__init__(message, details)
+import custom_exceptions_rectangle  # Импортируем наши пользовательские исключения
 
 
 class Rectangle:
     def __init__(self, length, width):
         if length <= 0 or width <= 0:
             if length <= 0 and width <= 0:
-                raise NegativeSideLengthError((length, width))
+                raise custom_exceptions_rectangle.NegativeSideLengthError((length, width))
             elif length <= 0:
-                raise NegativeSideLengthError(length)
+                raise custom_exceptions_rectangle.NegativeSideLengthError(length)
             else:
-                raise NegativeSideLengthError(width)
+                raise custom_exceptions_rectangle.NegativeSideLengthError(width)
 
         self.length = length
         self.width = width
 
     def area(self):
         return self.length * self.width
+
+    def __str__(self):
+        return f"Rectangle: length={self.length}, width={self.width}"
 
 
 def main():
@@ -62,10 +37,9 @@ def main():
 
     except ValueError:
         print("Ошибка: Некорректный ввод. Введите числа.")
-    except BaseRectangleException as e:
-        print(e.message)
-        if e.details:
-            print(f"Дополнительные детали: {e.details}")
+    except custom_exceptions_rectangle.BaseRectangleException as e:
+        e.log_exception()  # Записываем исключение в файл
+        print(e)
 
 
 if __name__ == "__main__":

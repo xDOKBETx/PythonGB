@@ -1,0 +1,21 @@
+{
+    "1": {
+        "1": {
+            "name": "Алексей",
+            "user_id": 1,
+            "access_level": 1
+        },
+        "3": {
+            "name": "Михаил",
+            "user_id": 3,
+            "access_level": 1
+        }
+    },
+    "2": {
+        "2": {
+            "name": "Дмитрий",
+            "user_id": 2,
+            "access_level": 2
+        }
+    }
+}

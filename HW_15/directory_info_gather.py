@@ -12,7 +12,7 @@
 import os
 import logging
 import collections
-import sys
+import argparse
 
 # Настройка логгирования для сохранения информации в файл 'directory_info.log'
 logging.basicConfig(filename='directory_info.log', level=logging.INFO,
@@ -22,43 +22,38 @@ logging.basicConfig(filename='directory_info.log', level=logging.INFO,
 FileInfo = collections.namedtuple('FileInfo', ['name', 'extension', 'is_directory', 'parent'])
 
 
-def gather_directory_info(my_directory_path, use_directory_flag=False):
+def gather_directory_info(my_directory_path):
     """
     Собирает информацию о содержимом указанного каталога и возвращает список объектов FileInfo.
 
     Параметры:
         my_directory_path (str): Путь до каталога на ПК.
-        use_directory_flag (bool, optional): Флаг, указывающий, следует ли определить
-                                            объекты как каталоги (True) или файлы (False).
-                                            По умолчанию установлен в False.
 
     Возвращает:
         list: Список объектов FileInfo, каждый из которых содержит информацию о файле или каталоге.
 
     Генерирует:
-        Exception: Если возникла ошибка при обработке содержимого каталога.
+        FileNotFoundError: Если указанный путь не существует.
 
     """
     try:
         dir_info = []
         abs_path = os.path.abspath(my_directory_path)
+        parent_dir = os.path.basename(abs_path)
         for item_in_dir in os.listdir(my_directory_path):
             item_path = os.path.join(abs_path, item_in_dir)
             name, extension = os.path.splitext(item_in_dir)
-            if use_directory_flag:
-                is_directory = os.path.isdir(item_path)
-            else:
-                is_directory = None
-            parent_dir = os.path.basename(abs_path)
-            dir_info.append(FileInfo(name, extension[1:], is_directory, parent_dir))
+            is_directory = os.path.isdir(item_path)
+            dir_info.append(FileInfo(name, extension[1:] if not is_directory else '', is_directory, parent_dir))
 
-            # Логгирование информации о каждом файле или каталоге
-            logging.info(f"FileInfo: {name}, {extension[1:]}, {is_directory}, {parent_dir}")
+        # Логгирование информации о содержимом каталога
+        logging.info(f"Directory Info: {dir_info}")
 
         return dir_info
 
-    except Exception:
+    except FileNotFoundError:
         logging.exception("Ошибка при сборе информации о содержимом каталога:")
+        raise
 
 
 def save_to_text_file(file_info_list, filename):
@@ -76,16 +71,17 @@ def save_to_text_file(file_info_list, filename):
 
 
 if __name__ == "__main__":
-    if len(sys.argv) != 2:
-        sys.exit(1)
-    directory_path = sys.argv[1]
+    parser = argparse.ArgumentParser(description='Gather information about files and directories in a given path.')
+    parser.add_argument('directory_path', type=str, help='Path to the directory on the computer')
+    args = parser.parse_args()
+
     try:
-        directory_info = gather_directory_info(directory_path, use_directory_flag=True)
+        directory_info = gather_directory_info(args.directory_path)
         for item in directory_info:
             print(item)
 
-        # Сохранение данных в текстовый файл с помощью логгирования
+        # Сохранение данных в текстовый файл
         save_to_text_file(directory_info, 'directory_info.txt')
 
-    except Exception as e:
-        print("Произошла ошибка.")
+    except FileNotFoundError:
+        print("Указанный путь не существует.")
